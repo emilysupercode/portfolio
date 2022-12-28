@@ -30,11 +30,26 @@
     src: url("../fonts/Inter-Bold.ttf");
 }
 
+@font-face {
+    font-family: 'Inter-Light';
+    src: url("../fonts/Inter-Light.ttf");
+}
+
+@font-face {
+    font-family: 'Inter-Thin';
+    src: url("../fonts/Inter-Thin.ttf");
+}
+
 
 
 /* ========================== 
         general styles
 ============================= */
+
+.english {
+    display: none;
+}
+
 html {
     font-family: 'Inter-Regular', sans-serif;
 }
@@ -61,13 +76,24 @@ h3 {
 p,
 ul li,
 ol li {
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: #113c4a;
 }
 
 .yellow_highlight {
+    font-size: 1.4rem;
     color: #FEC260;
-    margin: 20px 0;
+    filter: brightness(0) saturate(100%) invert(92%) sepia(71%) saturate(4181%) hue-rotate(311deg) brightness(101%) contrast(99%);
+    /* animation: rotate 1s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    animation-iteration-count: 1;
+    animation-fill-mode: both; */
+}
+
+.icon_color_filter {
+    color: #113C4A;
+    filter: brightness(0) saturate(100%) invert(17%) sepia(18%) saturate(1904%) hue-rotate(149deg) brightness(99%) contrast(91%);
 }
 
 /* ==========================
@@ -83,7 +109,7 @@ header nav {
 header nav ul {
     list-style-type: none;
     display: flex;
-    width: 50%;
+    width: 60%;
     justify-content: space-between;
     align-items: center;
 }
@@ -111,31 +137,37 @@ header nav ul li.nav__kontakt a:hover {
         HEADER INTRO
 ============================= */
 
-#intro {
+.intro {
     margin: 200px 100px;
     display: flex;
+    align-items: center;
 }
 
-#intro .yellow_highlight {
+.intro .yellow_highlight {
     margin-bottom: 0;
+
 }
 
-#intro article {
+.intro .yellow_highlight img {
+    width: 100px;
+}
+
+.intro article {
     width: 50%;
 }
 
-#intro article h2 {
+.intro article h2 {
     padding-bottom: 5px;
 }
 
-#intro article h3 {
+.intro article h3 {
     font-family: 'Inter-Regular', sans-serif;
     font-size: 2rem;
     padding-bottom: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-#intro__left a {
+.intro__left a {
     color: white;
     background-color: #113c4a;
     padding: 10px 50px;
@@ -144,31 +176,37 @@ header nav ul li.nav__kontakt a:hover {
     font-size: 1.5rem;
 }
 
-#intro__left a:hover {
+.intro__left a:hover {
     color: #113c4a;
     background-color: white;
     border: 2px solid #113c4a;
 }
 
-#intro__right {
-    border: 3px solid #265A5C;
+.intro__right {
+    display: inline-block;
     position: relative;
-    height: 475px;
+
 }
 
-#intro article img {
-    width: 100%;
-    margin-left: -15px;
-    margin-top: -20px;
+.intro__right::before {
     position: absolute;
-    z-index: -1;
+    border: 3px solid #265A5C;
+    top: 2%;
+    left: 3%;
+    width: 80%;
+    height: 100%;
+    content: '';
+}
+
+.intro__right img {
+    width: 80%;
 }
 
 /* ==========================
             UEBER MICH
 ============================= */
 
-#about {
+.about {
     margin: 200px 100px 200px 0;
     display: flex;
     align-items: center;
@@ -179,22 +217,22 @@ header nav ul li.nav__kontakt a:hover {
     border-bottom: 3px solid #265A5C;
 }
 
-#about h2 {
+.about h2 {
     padding: 0;
 }
 
-#about p {
+.about p {
     font-size: 1.6rem;
     margin: 10px 0;
 }
 
-#about__right {
+.about__right {
     display: flex;
     flex-direction: column;
     margin-left: 30px;
 }
 
-#social__icons {
+.social__icons {
     display: flex;
     width: 40%;
     justify-content: space-between;
@@ -205,9 +243,9 @@ header nav ul li.nav__kontakt a:hover {
             TECHSTACK
 ============================= */
 
-#techstack {
+.techstack {
     margin: 200px 0 200px 100px;
-    padding: 150px 150px 150px 100px;
+    padding: 150px 100px 150px 100px;
     border-top: 3px solid #265A5C;
     border-left: 3px solid #265A5C;
     border-bottom: 3px solid #265A5C;
@@ -215,107 +253,155 @@ header nav ul li.nav__kontakt a:hover {
     flex-direction: column;
 }
 
-#techstack__list {
-    display: flex;
+.techstack__list1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     margin-top: 20px;
-    gap: 40px;
+    gap: 20px;
 }
 
-#techstack__list div {
+.techstack__list2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.techstack__list3 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.techstack div {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-#techstack__list div p {
+.techstack img {
+    width: 100px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    object-position: center;
+    padding: 10px;
+}
+
+.techstack img:hover {
+    display: none;
+}
+
+.techstack div p {
     padding-top: 10px;
+    display: none;
 }
 
 /* ==========================
             WERDEGANG
 ============================= */
 
-#werdegang {
+.werdegang {
     margin: 200px 100px;
 }
 
-#erfahrung__grid {
+.erfahrung__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 30px repeat(4, 200px);
+    grid-template-rows: 30px repeat(4, 205px);
     gap: 20px;
 }
 
-#erfahrung__grid div p,
-#erfahrung__grid div ul li {
+.erfahrung__grid div ul {
+    list-style-type: square;
+    margin-top: 5px;
+}
+
+.erfahrung__grid div p,
+.erfahrung__grid div ul li {
     color: white;
 }
 
-#erfahrung__grid div ul li {
+.erfahrung__grid div ul li {
     margin-left: 30px;
 }
 
 .jobTitle {
     font-family: 'Inter-Bold', sans-serif;
-    font-size: 1.2rem;
-    padding: 2px 0;
+    font-size: 1.6rem;
+    padding: 5px 0;
 }
 
-#div1,
-#div2,
-#div3 {
+.div1:hover,
+.div2:hover,
+.div3:hover,
+.div4:hover,
+.div5:hover,
+.div6:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    ;
+}
+
+.div1,
+.div2,
+.div3 {
     background-color: rgb(38, 90, 92);
     padding: 20px;
 }
 
-#div4,
-#div5,
-#div6 {
+.div4,
+.div5,
+.div6 {
     background-color: rgb(38, 90, 92, 0.6);
     padding: 20px;
 }
 
-#berufserfahrung__headline {
+.berufserfahrung__headline {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: end;
+    padding: 0;
+}
+
+.ausbildung__headline {
     grid-column: 1/3;
     grid-row: 1/2;
     align-self: end;
     padding: 0;
 }
 
-#ausbildung__headline {
-    grid-column: 2/3;
-    grid-row: 2/3;
-    align-self: end;
-    padding: 0;
-}
-
-#div1 {
+.div1 {
     grid-column: 1/2;
     grid-row: 2/3;
 }
 
-#div2 {
+.div1 p:nth-of-type(3) {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    font-family: "Inter-Thin", sans-serif;
+}
+
+.div2 {
     grid-column: 1/2;
     grid-row: 3/4;
 }
 
-#div3 {
+.div3 {
     grid-column: 1/2;
     grid-row: 4/5;
 }
 
-#div4 {
+.div4 {
     grid-column: 2/3;
     grid-row: 3/4;
 }
 
-#div5 {
+.div5 {
     grid-column: 2/3;
     grid-row: 4/5;
 }
 
-#div6 {
+.div6 {
     grid-column: 2/3;
     grid-row: 5/6;
 }
@@ -324,18 +410,18 @@ header nav ul li.nav__kontakt a:hover {
             PROJEKTE
 ============================= */
 
-#projekte {
+.projekte {
     margin: 200px 100px;
 }
 
-#projekt__grid {
+.projekt__grid {
     display: grid;
     gap: 40px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 200px);
 }
 
-#projekt__grid div {
+.projekt__grid div {
     background-color: #8BBCCC;
     display: flex;
     flex-direction: column;
@@ -343,8 +429,18 @@ header nav ul li.nav__kontakt a:hover {
     justify-content: center;
 }
 
-#projekt__grid div h3,
-#projekt__grid div p {
+.projekt__grid div img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    border-radius: 10px;
+    display: none;
+}
+
+.projekt__grid div h3,
+.projekt__grid div p {
     color: white;
 }
 
@@ -352,16 +448,16 @@ header nav ul li.nav__kontakt a:hover {
             TESTIMONIALS
 ============================= */
 
-#testimonials {
+.testimonials {
     margin: 200px 100px;
 }
 
-#testimonials__flex {
+.testimonials__flex {
     display: flex;
     flex-direction: column;
 }
 
-#testimonials__flex article {
+.testimonials__flex article {
     display: flex;
     align-items: center;
 }
@@ -377,4 +473,10 @@ header nav ul li.nav__kontakt a:hover {
 
 .testimonials__right {
     width: 50%;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotateZ(360deg);
+    }
 }
